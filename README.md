@@ -1,36 +1,33 @@
- C2 Mapper
+# C2 Mapper
+
 Асинхронный инструмент для сбора, геолокации и визуализации Command & Control серверов из публичных threat intelligence фидов.
 
-Возможности
-Сбор IP из abuse.ch (SSL Blacklist, Feodo Tracker, ThreatFox)
+## Возможности
 
-Геолокация через DB-IP Lite (работает в РФ без VPN)
+- Сбор IP из фидов abuse.ch (SSL Blacklist, Feodo Tracker, ThreatFox)
+- Геолокация через DB-IP Lite — работает на территории РФ без VPN
+- Автоматическое обновление базы геолокации каждые 30 дней
+- Кэширование результатов в SQLite для быстрых повторных запусков
+- Интерактивная карта на базе Folium с кластеризацией маркеров
+- Экспорт статистики в JSON и отчёта в Markdown
 
-Автообновление базы геолокации раз в 30 дней
+## Установка
 
-Кэширование в SQLite для быстрых повторных запусков
-
-Интерактивная карта на Folium с кластеризацией
-
-Экспорт статистики в JSON и Markdown-отчёт
-
-
-Установка: git clone https://github.com/yourusername/c2-mapper.git
-cd c2-mapper
+git clone https://github.com/dankertea51-cpu/C2-Mapper-THREAT-Intelligence-Geolocation-Tool.git
+cd C2-Mapper-THREAT-Intelligence-Geolocation-Tool
 pip install aiohttp folium geoip2 tqdm aiofiles
 
+## Использование
 
-Использование: python c2_map.py  # обычный запуск
-python c2_map.py --debug  # режим отладки
+python c2_map.py
+python c2_map.py --debug
 
-Результаты
-В папке c2_output/ создаются:
+## Результаты
 
-c2_map.html — интерактивная карта
+c2_output/c2_map.html
+c2_output/c2_stats.json
+c2_output/c2_report.md
 
-c2_stats.json — статистика
+## Примечание
 
-c2_report.md — текстовый отчёт
-
-Особенности
-База DB-IP Lite скачивается автоматически при первом запуске. Не требует регистрации, прокси или VPN на территории РФ.
+База DB-IP Lite скачивается автоматически при первом запуске.
